@@ -33,5 +33,17 @@
     "Your email address is unverified.": "Your email address is unverified.",
     "Click here to re-send the verification email.": "Click here to re-send the verification email.",
     "A new verification link has been sent to your email address.": "A new verification link has been sent to your email address.",
-    "You're logged in!": "You're logged in!"
+    "You're logged in!": "You're logged in!",
+    "Driver": "Driver",
+    "Delivery address": "Delivery address",
+    "Recipient name": "Recipient name",
+    "Delivery status": "Delivery status",
+    "pagination.previous": "&lt; Previous",
+    "pagination.next": "Next &gt;",
+    "enums.assignment_status.assigned": "Assigned",
+    "enums.assignment_status.in_progress": "In Progress",
+    "enums.assignment_status.finished": "Finished",
+    "enums.assignment_status.failed": "Failed",
+    "edit": "Edit",
+    "delete": "Delete"
 }

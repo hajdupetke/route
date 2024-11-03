@@ -33,5 +33,17 @@
     "Your email address is unverified.": "Az e-mail címe nincs megerősítve.",
     "Click here to re-send the verification email.": "Kattintson ide az ellenőrző e-mail újraküldéséhez.",
     "A new verification link has been sent to your email address.": "Egy új ellenőrző linket küldtünk az e-mail címére.",
-    "You're logged in!": "Sikeresen bejelentkezett!"
+    "You're logged in!": "Sikeresen bejelentkezett!",
+    "Driver": "Fuvarozó",
+    "Delivery address": "Érkezési cím",
+    "Recipient name": "Címzett neve",
+    "Delivery status": "Státusz",
+    "pagination.previous": "&lt; Előző",
+    "pagination.next": "Következő &gt;",
+    "enums.assignment_status.assigned": "Kiosztva",
+    "enums.assignment_status.in_progress": "Folyamatban",
+    "enums.assignment_status.finished": "Befejezve",
+    "enums.assignment_status.failed": "Sikertelen",
+    "edit": "Módosítás",
+    "delete": "Törlés"
 }
