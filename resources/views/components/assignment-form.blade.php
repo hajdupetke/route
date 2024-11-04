@@ -148,7 +148,7 @@
 
     <div class="mb-4">
         <label for="driver" class="label">{{ __('assignment.driver') }}</label>
-        <select class="mt-1 block w-full select select-bordered" id="driver" name="driver">
+        <select class="mt-1 block w-full select select-bordered" id="driver" name="driver" @if(!$isAdmin) disabled @endif>
             @foreach (\App\Models\User::where('role', \App\Enums\UserRole::Driver)->get() as $user)
                 <option @if($assignment->driver == $user) selected @endif value="{{$user->id}}">{{$user->name}}</option>
             @endforeach
