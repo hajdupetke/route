@@ -6,6 +6,7 @@ use App\Enums\AssignmentStatus;
 use App\Enums\UserRole;
 use App\Http\Requests\AssignmentCreateRequest;
 use App\Http\Requests\AssignmentUpdateRequest;
+use App\Notifications\StatusChange;
 use Auth;
 use App\Models\Assignment;
 use App\Models\User;
@@ -56,6 +57,13 @@ class AssignmentController extends Controller
             if($assignment->status != $status) {
                 $assignment->status = $status;
                 //Todo: Send notification to admin user if status changed to failed.
+
+                if($status == AssignmentStatus::Failed) {
+                    $admins = User::where('role', UserRole::Admin)->get();
+                    foreach ($admins as $admin) {
+                        $admin->notify(new StatusChange($assignment));
+                    }
+                }
             }
         }
 
