@@ -48,5 +48,13 @@
     "delete": "Delete",
     "assignment.delete": "Delete",
     "assignment.delete-heading": "Delete assignment",
-    "assignment.are-you-sure": "Are you sure you want to delete this assignment? This action cannot be undone!"
+    "assignment.are-you-sure": "Are you sure you want to delete this assignment? This action cannot be undone!",
+    "assignment.start_address": "Start address",
+    "assignment.delivery_address": "Delivery address",
+    "assignment.recipient_name": "Recipient name",
+    "assignment.recipient_phone_number": "Recipient phone number",
+    "assignment.status": "Status",
+    "assignment.driver": "Driver",
+    "assignment.update": "Update assignment",
+    "assignment.create": "Create assignment"
 }

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\AssignmentStatus;
 use App\Enums\UserRole;
+use App\Http\Requests\AssignmentUpdateRequest;
 use Auth;
-use Illuminate\Http\Request;
 use App\Models\Assignment;
+use App\Models\User;
+
 
 class AssignmentController extends Controller
 {
@@ -25,6 +28,42 @@ class AssignmentController extends Controller
             return abort(403, 'Not authorized');
         }
         $assignment->delete();
+
+        return redirect()->route('dashboard');
+    }
+
+    public function edit(Assignment $assignment) {
+        return view('assignments.edit', ['assignment' => $assignment]);
+    }
+
+    public function update(Assignment $assignment, AssignmentUpdateRequest $request) {
+
+        $validated = $request->validated();
+
+        // Check if driver changed, and modify assignment if it did.
+        if($validated['driver'] != null) {
+            $user = User::where('id', $validated['driver'])->get()[0];
+            if($assignment->driver != $user) {
+                // Update driver
+                $user->assignments()->save($assignment);
+            }
+        }
+
+        // Check if status changed and modify assignment if it did.
+        if($validated['status'] != null) {
+            $status = AssignmentStatus::tryFrom($validated['status']);
+            if($assignment->status != $status) {
+                $assignment->status = $status;
+                //Todo: Send notification to admin user if status changed to failed.
+            }
+        }
+
+
+        $updates = array_filter($validated, function ($value, $key) use ($assignment) {
+            return $value !== null && $value !== $assignment->$key && $key != 'status' && $key != 'driver';
+        }, ARRAY_FILTER_USE_BOTH);
+
+        $assignment->update($updates);
 
         return redirect()->route('dashboard');
     }

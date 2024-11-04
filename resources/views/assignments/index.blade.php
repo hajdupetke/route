@@ -29,7 +29,7 @@
                                 <td>{{$item['recipient_name']}}</td>
                                 <td> <x-status-badge :status="$item->status" /></td>
                                 <td>
-                                    <button class="btn btn-warning">{{__('edit')}}</button>
+                                    <a href="{{route('assignment.edit', $item)}}" class="btn btn-warning">{{__('edit')}}</a>
                                     @if (Auth::user()->role == App\Enums\UserRole::Admin)
                                         @include('assignments.partials.delete-assignment', ['assignment' => $item])
                                     @endif

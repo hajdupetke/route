@@ -48,5 +48,13 @@
     "delete": "Törlés",
     "assignment.delete": "Törlés",
     "assignment.delete-heading": "Munka törlése",
-    "assignment.are-you-sure": "Biztos kiszeretné törölni ezt a munkát? A törlést nem lehet visszavonni!"
+    "assignment.are-you-sure": "Biztos kiszeretné törölni ezt a munkát? A törlést nem lehet visszavonni!",
+    "assignment.start_address": "Kezdési cím",
+    "assignment.delivery_address": "Érkezési cím",
+    "assignment.recipient_name": "Címzett neve",
+    "assignment.recipient_phone_number": "Címzett telefonszáma",
+    "assignment.status": "Státusz",
+    "assignment.driver": "Fuvarozó",
+    "assignment.update": "Munka frissítése",
+    "assignment.create": "Munka létrehozása"
 }

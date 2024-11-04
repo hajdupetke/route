@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function() {
     Route::get('/dashboard', [AssignmentController::class, 'index'])->name('dashboard');
-    Route::resource('assignment', AssignmentController::class, ['only' => ['destroy']]);
+    Route::resource('assignment', AssignmentController::class, ['except' => ['index']]);
 });
 
 
