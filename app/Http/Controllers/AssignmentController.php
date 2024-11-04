@@ -42,7 +42,7 @@ class AssignmentController extends Controller
         $validated = $request->validated();
 
         // Check if driver changed, and modify assignment if it did.
-        if($validated['driver'] != null) {
+        if(isset($validated['driver']) && $validated['driver'] != null) {
             $user = User::where('id', $validated['driver'])->get()[0];
             if($assignment->driver != $user) {
                 // Update driver
@@ -51,7 +51,7 @@ class AssignmentController extends Controller
         }
 
         // Check if status changed and modify assignment if it did.
-        if($validated['status'] != null) {
+        if(isset($validated['status']) && $validated['status'] != null) {
             $status = AssignmentStatus::tryFrom($validated['status']);
             if($assignment->status != $status) {
                 $assignment->status = $status;
