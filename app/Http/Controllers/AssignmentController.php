@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\AssignmentStatus;
 use App\Enums\UserRole;
+use App\Http\Requests\AssignmentCreateRequest;
 use App\Http\Requests\AssignmentUpdateRequest;
 use Auth;
 use App\Models\Assignment;
@@ -66,5 +67,36 @@ class AssignmentController extends Controller
         $assignment->update($updates);
 
         return redirect()->route('dashboard');
+    }
+
+    public function create() {
+        $user = Auth::user();
+
+        if($user->role !== UserRole::Admin) {
+            return abort(403, 'Not authorized');
+        }
+
+        return view('assignments.create');
+    }
+
+    public function store(AssignmentCreateRequest $request) {
+        $validated = $request->validated();
+        $user = User::where('id', $validated['driver'])->get()[0];
+        $status = AssignmentStatus::tryFrom($validated['status']);
+        if ($status === null) {
+            dd("Invalid status value:", $validated['status']);
+        }
+
+        $assignment = $user->assignments()->create(attributes: [
+            'status' => $status,
+            'start_address' => $validated['start_address'],
+            'delivery_address' => $validated['delivery_address'],
+            'recipient_name' => $validated['recipient_name'],
+            'recipient_phone_number' => $validated['recipient_phone_number'],
+
+        ]);
+
+        return redirect()->route('dashboard');
+
     }
 }

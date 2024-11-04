@@ -11,7 +11,7 @@ class Assignment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['start_address', 'delivery_address', 'recipient_name', 'recipient_phone_number'];
+    protected $fillable = ['start_address', 'delivery_address', 'recipient_name', 'recipient_phone_number', 'status'];
 
     protected $casts = ['status' => AssignmentStatus::class];
 

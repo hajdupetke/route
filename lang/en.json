@@ -56,5 +56,8 @@
     "assignment.status": "Status",
     "assignment.driver": "Driver",
     "assignment.update": "Update assignment",
-    "assignment.create": "Create assignment"
+    "assignment.create": "Create assignment",
+    "create": "Create new assignment",
+    "error.max": "Too long!",
+    "error.required": "You must enter something!"
 }

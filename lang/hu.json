@@ -56,5 +56,8 @@
     "assignment.status": "Státusz",
     "assignment.driver": "Fuvarozó",
     "assignment.update": "Munka frissítése",
-    "assignment.create": "Munka létrehozása"
+    "assignment.create": "Munka létrehozása",
+    "create": "Új munka létrehozása",
+    "error.max": "Túl hosszú!",
+    "error.required": "Kötelező valamilyen adatot megadni!"
 }

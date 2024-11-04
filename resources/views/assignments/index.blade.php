@@ -9,6 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                    @if (Auth::user()->role == App\Enums\UserRole::Admin)
+                        <a href="{{route('assignment.create')}}" class="btn btn-success mb-2">{{__('create')}}</a>
+                    @endif
                     <table class="table w-full">
                         <thead>
                             <tr>
