@@ -45,5 +45,8 @@
     "enums.assignment_status.finished": "Befejezve",
     "enums.assignment_status.failed": "Sikertelen",
     "edit": "Módosítás",
-    "delete": "Törlés"
+    "delete": "Törlés",
+    "assignment.delete": "Törlés",
+    "assignment.delete-heading": "Munka törlése",
+    "assignment.are-you-sure": "Biztos kiszeretné törölni ezt a munkát? A törlést nem lehet visszavonni!"
 }

@@ -17,4 +17,15 @@ class AssignmentController extends Controller
 
         return view('assignments.index', ['assignments' => $assignments]);
     }
+
+    public function destroy(Assignment $assignment) {
+        $user = Auth::user();
+
+        if($user->role !== UserRole::Admin) {
+            return abort(403, 'Not authorized');
+        }
+        $assignment->delete();
+
+        return redirect()->route('dashboard');
+    }
 }

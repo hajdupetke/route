@@ -31,7 +31,7 @@
                                 <td>
                                     <button class="btn btn-warning">{{__('edit')}}</button>
                                     @if (Auth::user()->role == App\Enums\UserRole::Admin)
-                                        <button class="btn btn-error ml-2">{{__('delete')}}</button>
+                                        @include('assignments.partials.delete-assignment', ['assignment' => $item])
                                     @endif
                                 </td>
                             </tr>
