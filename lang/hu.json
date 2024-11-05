@@ -59,5 +59,7 @@
     "assignment.create": "Munka létrehozása",
     "create": "Új munka létrehozása",
     "error.max": "Túl hosszú!",
-    "error.required": "Kötelező valamilyen adatot megadni!"
+    "error.required": "Kötelező valamilyen adatot megadni!",
+    "assignment.details": "Munka részletei",
+    "view": "Megtekintés"
 }

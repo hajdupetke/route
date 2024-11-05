@@ -59,5 +59,7 @@
     "assignment.create": "Create assignment",
     "create": "Create new assignment",
     "error.max": "Too long!",
-    "error.required": "You must enter something!"
+    "error.required": "You must enter something!",
+    "assignment.details": "Assignment details",
+    "view": "View"
 }

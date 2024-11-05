@@ -1,5 +1,5 @@
 <button
-class="btn btn-error ml-2"
+class="btn btn-error"
 x-data=""
 x-on:click.prevent="$dispatch('open-modal', 'confirm-assignment-{{ $assignment->id }}-deletion')"
 >{{ __('assignment.delete') }}</button>

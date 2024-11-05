@@ -18,6 +18,7 @@ class AssignmentTest extends TestCase
      */
     public function test_assignment_creation(): void
     {
+        $this->withoutExceptionHandling();
         $driver = User::factory()->create(['role' => UserRole::Driver]);
         $admin = User::factory()->create(['role' => UserRole::Admin]);
 
@@ -31,9 +32,13 @@ class AssignmentTest extends TestCase
         ];
 
         $response = $this->actingAs($admin)->post(route('assignment.store'), $data);
-        fwrite(STDERR, print_r($data));
 
-        $response->assertRedirect(route('dashboard'));
+        $assignment = Assignment::where(["start_address" => "1074, Budapest Vörösmarty utca 2.",
+            "delivery_address" => "2013, Pomáz, Huszár utca 32.",
+            "recipient_name" => "Varga Lajos",
+            "recipient_phone_number" => "+36 30 221 2415",])->first();
+
+        $response->assertRedirect(route('assignment.show', $assignment));
         $this->assertDatabaseHas('assignments', [
             "start_address" => "1074, Budapest Vörösmarty utca 2.",
             "delivery_address" => "2013, Pomáz, Huszár utca 32.",
@@ -60,7 +65,7 @@ class AssignmentTest extends TestCase
             'recipient_phone_number' => "06201234567",
             "status" => AssignmentStatus::InProgress->value,
         ]);
-        $response->assertRedirect(route('dashboard'));
+        $response->assertRedirect(route('assignment.show', $assignment));
         $this->assertDatabaseHas('assignments', [
             "start_address" => "1074, Budapest Vörösmarty utca 2.",
             "delivery_address" => "2013, Pomáz, Huszár utca 32.",
@@ -104,7 +109,7 @@ class AssignmentTest extends TestCase
         $response = $this->actingAs($driver)->put(route('assignment.update', $assignment), [
             "status" => AssignmentStatus::InProgress->value,
         ]);
-        $response->assertRedirect(route('dashboard'));
+        $response->assertRedirect(route('assignment.show', $assignment));
         $this->assertDatabaseHas('assignments', [
             "start_address" => "1074, Budapest Vörösmarty utca 2.",
             "delivery_address" => "2013, Pomáz, Huszár utca 32.",

@@ -74,7 +74,7 @@ class AssignmentController extends Controller
 
         $assignment->update($updates);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('assignment.show', $assignment);
     }
 
     public function create() {
@@ -104,7 +104,11 @@ class AssignmentController extends Controller
 
         ]);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('assignment.show', $assignment);
 
+    }
+
+    public function show(Assignment $assignment) {
+        return view('assignments.show', ['assignment' => $assignment]);
     }
 }
