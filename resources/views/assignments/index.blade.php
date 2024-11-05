@@ -9,9 +9,25 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @if (Auth::user()->role == App\Enums\UserRole::Admin)
-                        <a href="{{route('assignment.create')}}" class="btn btn-success mb-2">{{__('create')}}</a>
-                    @endif
+                    <div class="flex justify-between items-center mb-2">
+                        <form method="GET" action="{{ route('dashboard') }}" class="form-control w-1/3">
+                            <label for="status" class="mr-2 label text-sm">{{ __('Filter by Status') }}</label>
+                            <div class="flex gap-1">
+                                <select name="status" id="status" class="select select-border">
+                                    <option value="all">{{ __('All Statuses') }}</option>
+                                    @foreach(\App\Enums\AssignmentStatus::cases() as $status)
+                                        <option value="{{ $status->value }}" {{ request('status') == $status->value ? 'selected' : '' }}>
+                                            {{ $status->label() }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <button type="submit" class="btn btn-primary ml-2">{{ __('Filter') }}</button>
+                            </div>
+                        </form>
+                        @if (Auth::user()->role == App\Enums\UserRole::Admin)
+                            <a href="{{route('assignment.create')}}" class="btn btn-success">{{__('create')}}</a>
+                        @endif
+                    </div>
                     <table class="table w-full">
                         <thead>
                             <tr>

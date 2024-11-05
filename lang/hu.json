@@ -61,5 +61,8 @@
     "error.max": "Túl hosszú!",
     "error.required": "Kötelező valamilyen adatot megadni!",
     "assignment.details": "Munka részletei",
-    "view": "Megtekintés"
+    "view": "Megtekintés",
+    "Filter by Status": "Szűrés státusz alapján",
+    "Filter": "Szűrés",
+    "All Statuses": "Mindegyik"
 }

@@ -8,6 +8,7 @@ use App\Http\Requests\AssignmentCreateRequest;
 use App\Http\Requests\AssignmentUpdateRequest;
 use App\Notifications\StatusChange;
 use Auth;
+use Illuminate\Http\Request;
 use App\Models\Assignment;
 use App\Models\User;
 
@@ -16,9 +17,15 @@ class AssignmentController extends Controller
 {
     //
 
-    public function index() {
+    public function index(Request $request) {
         $user = Auth::user();
-        $assignments = $user->role == UserRole::Admin ? Assignment::simplePaginate(10) : $user->assignments()->simplePaginate(10);
+        $validated = $request->validate(['status' => 'string']);
+        $status = isset($validated['status']) && $validated['status'] != 'all' ? $validated['status']: null;
+        $query = $user->role == UserRole::Admin ? Assignment::query() : $user->assignments();
+        if($status) {
+            $query->where('status', $status);
+        }
+        $assignments = $query->simplePaginate(10);
 
         return view('assignments.index', ['assignments' => $assignments]);
     }

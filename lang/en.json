@@ -61,5 +61,8 @@
     "error.max": "Too long!",
     "error.required": "You must enter something!",
     "assignment.details": "Assignment details",
-    "view": "View"
+    "view": "View",
+    "Filter by Status": "Filter by Status",
+    "Filter": "Filter",
+    "All Statuses": "All Statuses"
 }
