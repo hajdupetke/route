@@ -37,9 +37,9 @@ class StatusChange extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->subject("Assignment #{{$this->assignment->id}} failed")
-                    ->line("The status of assignment #{{$this->assignment->id}} was changed to failed. Driver: {{$this->assignment->driver->name}}.")
-                    ->action('View assignment', url('/'));
+                    ->subject("Assignment #{$this->assignment->id} failed")
+                    ->line("The status of assignment #{$this->assignment->id} was changed to failed. Driver: {$this->assignment->driver->name}.")
+                    ->action('View assignment', url("/assignment/{$this->assignment->id}"));
     }
 
     /**
